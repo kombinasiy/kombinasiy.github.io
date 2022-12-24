@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checout
+    - name: Checkout
       uses: actions/checkout@v3
       
     - name: install GHC and cabal
@@ -17,7 +17,7 @@ jobs:
         ghc-version: '9.0.2'
         cabal-version: '3.8.1.0'
 
-    - name: Cache ~/.cabal/packages, ~/.cabal/store and dist-newstyle
+    - name: Caching build
       uses: actions/cache@v3
       with:
         path: |
@@ -35,9 +35,9 @@ jobs:
     - name: Generate Site
       run: /home/runner/.cabal/bin/yst
 
-    - name: Deploy to gh_pages branch
+    - name: push to gh_pages branch
       uses: peaceiris/actions-gh-pages@v3
       with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
         publish_branch: gh_pages
