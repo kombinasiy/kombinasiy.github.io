@@ -1,0 +1,41 @@
+name: Github Pages
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checout
+      uses: actions/checkout@v3
+    - name: Cache ~/.cabal/packages, ~/.cabal/store and dist-newstyle
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cabal/packages
+          ~/.cabal/store
+          dist-newstyle
+        key: ${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('**/*.cabal', '**/cabal.project', '**/cabal.project.freeze') }}
+        restore-keys: ${{ runner.os }}-${{ matrix.ghc }}-
+    - name: install GHC and cabal
+      uses: haskell/actions/setup@v2
+      with:
+        ghc-version: '9.0.2'
+        cabal-version: '3.8.1.0'
+
+    - name: Install yst
+      run: |
+        cabal update
+        cabal install yst
+
+    - name: Generate Site
+      run: yst
+
+    - name: Deploy to gh_pages branch
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_dir: ./site
+        publish_branch: gh_pages

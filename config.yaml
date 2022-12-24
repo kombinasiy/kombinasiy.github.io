@@ -1,0 +1,6 @@
+indexfile: data/index.yaml
+title: Kombinasi Y
+sourcedir: [templates]
+datadir: data
+filesdir: [media]
+layout: layout.html.st
