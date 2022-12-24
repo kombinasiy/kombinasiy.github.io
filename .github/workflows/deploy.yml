@@ -31,7 +31,7 @@ jobs:
         cabal install yst
 
     - name: Generate Site
-      run: cabal exec yst
+      run: /home/runner/.cabal/bin/yst
 
     - name: Deploy to gh_pages branch
       uses: peaceiris/actions-gh-pages@v3
