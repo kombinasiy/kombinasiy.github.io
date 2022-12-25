@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" media="print" href="$root$style/print.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
@@ -32,17 +32,17 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="$root$index.html">$sitetitle$</a>
           </div>
-          <div class="navbar-collapse collapse">
+          <div class="navbar-collapse collapse navbar-right">
             $nav$
           </div>
         </div>
       </nav>
       <header>
-        <h1>$sitetitle$</h1>
       </header>
       <div class="row">
-        <main role="main" class="col-md-10">
+        <main role="main" class="container">
           $contents$
         </main>
       </div>
