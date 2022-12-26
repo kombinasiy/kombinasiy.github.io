@@ -1,4 +1,4 @@
-# Room 101
+# Haskell
 
 Room 101 holds 60 people.
 

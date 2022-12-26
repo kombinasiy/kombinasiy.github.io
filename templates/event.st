@@ -1,2 +1,2 @@
-- $if(it.speaker)$$it.speaker; separator=" and "$, $endif$ *$it.title$*.
+- $if(it.oleh)$$it.oleh; separator=" dan "$, $endif$ *$it.judul$*.
 
