@@ -3,7 +3,9 @@
   template : index.st
   requires : berita.st
   data     :
-    recentevents : FROM berita.yaml ORDER BY date DESC LIMIT 3
+    recentevents :  FROM data.sqlite
+                    QUERY "select * from berita"
+                    ORDER BY date DESC LIMIT 3
   inmenu: no
 
 - url      : berita.html
@@ -11,7 +13,9 @@
   template : berita.st
   requires : [berita.st, deskripsi.st, tanggal.st]
   data     :
-    tanngalberita : FROM berita.yaml ORDER BY date DESC GROUP BY date
+    tanngalberita : FROM data.sqlite
+                    QUERY "select * from berita"
+                      ORDER BY date DESC GROUP BY date
 
 - Ruang Belajar:
   - url      : haskell.html
